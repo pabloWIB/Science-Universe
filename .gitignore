@@ -1,0 +1,28 @@
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Environment and secrets
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies and build output
+node_modules/
+dist/
+.vercel/
+
+# Prepros (the Sass toolchain this project no longer uses)
+prepros.config
+prepros-6.config
+prepros.cfg
+"Prepros Export"/

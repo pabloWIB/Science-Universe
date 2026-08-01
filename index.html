@@ -1,212 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="CSS/normalize.css">
-	<link rel="stylesheet" href="CSS/styles.css">
-	<link rel="icon" type="image/x-icon" href="Science-Universe.png">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<title>3D</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Science Universe — How science explains natural phenomena</title>
+  <meta name="description" content="Science Universe is a single-screen concept landing page about how science explains natural phenomena and makes predictions through observation and analysis.">
+
+  <link rel="canonical" href="https://scienceuniverse.wib.digital/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Science Universe — How science explains natural phenomena">
+  <meta property="og:description" content="A single-screen concept landing page about how science explains natural phenomena and makes predictions through observation and analysis.">
+  <meta property="og:url" content="https://scienceuniverse.wib.digital/">
+  <meta property="og:image" content="https://scienceuniverse.wib.digital/assets/img/logo/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Science Universe logo: an atom crossed by a magnifying glass.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#072350">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <script defer src="assets/js/main.js"></script>
+  <noscript>
+    <style>
+      /* The overlay menu is script driven; without it the header links stand alone. */
+      #menu-open,
+      #menu {
+        display: none;
+      }
+    </style>
+  </noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pablo Nieto Pérez",
+    "url": "https://wib.digital",
+    "jobTitle": "Web Designer and Developer",
+    "sameAs": [
+      "https://www.fiverr.com/pablonietop",
+      "https://www.linkedin.com/in/pablo-nieto-perez-39a530292"
+    ]
+  }
+  </script>
 </head>
 <body>
-    <div class="backVid" id="video">
-        <video class="findVid" autoplay muted loop>
-            <source src="IMG/vid1.mp4" type="video/mp4">
-        </video>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="backdrop" id="backdrop" aria-hidden="true">
+    <video class="backdrop__video" autoplay muted loop playsinline preload="auto"
+           poster="assets/video/science-universe-loop-poster.jpg" width="720" height="720">
+      <source src="assets/video/science-universe-loop.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="shell" id="shell">
+    <div class="shell__inner">
+
+      <header class="site-header reveal reveal--header">
+        <nav class="site-nav" aria-label="Main">
+          <ul class="site-nav__list">
+            <li><a class="chip chip--active" href="#hero">Overview</a></li>
+            <li><a class="chip" href="#analysis">Analysis</a></li>
+            <li><a class="chip" href="#community">Community</a></li>
+          </ul>
+          <button class="chip chip--solid" type="button" id="menu-open"
+                  aria-expanded="false" aria-controls="menu">Menu</button>
+        </nav>
+      </header>
+
+      <main id="main">
+
+        <section class="hero reveal" id="hero" aria-labelledby="hero-title">
+          <div class="hero__row">
+            <div class="hero__brand">
+              <span class="hero__orbs" aria-hidden="true">
+                <span class="orb"></span>
+                <span class="orb orb--offset"></span>
+              </span>
+              <h1 class="hero__title" id="hero-title">Science Universe</h1>
+            </div>
+            <a class="hero__jump" href="#pillars" aria-label="Jump to the overview cards">
+              <svg viewBox="0 -960 960 960" width="20" height="20" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M673-446.67H160v-66.66h513l-240-240L480-800l320 320-320 320-47-46.67 240-240Z"></path>
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        <div class="pillars reveal" id="pillars">
+
+          <article class="pillar pillar--statement">
+            <h2 class="pillar__title"><span class="u-underline">Explain</span> natural phenomena and make predictions.</h2>
+            <div class="pillar__note">
+              <p><span class="u-strong">Scientific knowledge</span> is constantly evolving as new
+                discoveries and technologies emerge, contributing to our understanding
+                of the natural world.</p>
+              <span class="rule" aria-hidden="true"></span>
+            </div>
+            <p class="pillar__label">
+              <span>Observation system</span>
+              <span class="pillar__badge" aria-hidden="true">
+                <svg viewBox="0 -960 960 960" width="16" height="16" focusable="false">
+                  <path fill="currentColor" d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"></path>
+                </svg>
+              </span>
+            </p>
+          </article>
+
+          <article class="pillar pillar--analysis" id="analysis">
+            <h2 class="pillar__heading">Analysis</h2>
+            <p class="pillar__text"><span class="u-underline">Based on observation</span> and existing
+              knowledge scientists propose a testable
+              explanation or hypothesis to answer.</p>
+          </article>
+
+          <article class="pillar pillar--community" id="community">
+            <div class="pillar__eyebrow">
+              <span class="pillar__eyebrow-row">
+                <span class="dot" aria-hidden="true"></span>
+                <img class="pillar__mark" src="assets/img/content/wib-mark.png"
+                     alt="wib.digital logo" width="128" height="128" loading="lazy" decoding="async">
+              </span>
+              <span class="pillar__eyebrow-text">Research</span>
+            </div>
+            <h2 class="pillar__heading">Community</h2>
+            <p class="pillar__text">New evidence and <span class="u-underline">discoveries</span> can lead to
+              the modification or rejection of existing
+              theories and the development.</p>
+          </article>
+
+        </div>
+
+        <div class="marquee reveal">
+          <p class="marquee__track">
+            <span class="marquee__copy">SCIENTISTS MAKE OBSERVATIONS OF THE NATURAL WORLD AND IDENTIFY A SPECIFIC PHENOMENON OR QUESTION OF INTEREST • SCIENTISTS ANALYSE THE COLLECTED DATA USING STATISTICAL AND ANALYTICAL METHODS • </span>
+            <span class="marquee__copy" aria-hidden="true">SCIENTISTS MAKE OBSERVATIONS OF THE NATURAL WORLD AND IDENTIFY A SPECIFIC PHENOMENON OR QUESTION OF INTEREST • SCIENTISTS ANALYSE THE COLLECTED DATA USING STATISTICAL AND ANALYTICAL METHODS • </span>
+          </p>
+        </div>
+
+      </main>
+
+      <footer class="site-footer reveal">
+        <p class="site-footer__statement">
+          SCIENCE IS A SYSTEMATIC AND <span class="u-underline">ORGANIZED APPROACH</span> TO UNDERSTANDING THE NATURAL WORLD THROUGH
+          OBSERVATION EXPERIMENTATION AND THE FORMULATION OF THEORIES OR LAWS <span class="u-strong">BASED ON EVIDENCE</span>
+        </p>
+        <p class="site-footer__credit">
+          Built by <a href="https://wib.digital" rel="noopener">wib.digital</a> —
+          <a href="https://www.fiverr.com/pablonietop" rel="noopener">hire me on Fiverr</a>
+        </p>
+      </footer>
+
     </div>
+  </div>
 
-    <div class="content">
-		<div class="intContent">
-			<header id="headerContent">
-				<div class="headerContent">
-					<div>
-						<div>
-							<span>Home page</span>
-						</div>
-						<div>
-							<span>Our services</span>
-						</div>
-						<div>
-							<span>Possibilities</span>
-						</div>
-						<div class="Menu">
-							<span>Menu</span>
-						</div>
-						
-					</div>
-					<div>
-						<div>
-							<a target="_blank" href="https://twitter.com">
-								<img src="IMG/twitter.svg" alt="twitter">	
-							</a>
-						</div>
-						<div>
-							<a target="_blank" href="https://instagram.com">
-								<img src="IMG/instagram.svg" alt="instagram">
-							</a>
-						</div>
-						<div>
-							<span>Dashboard panel</span>
-						</div>
-					</div>
-				</div>
-			</header>
-			<main>
-
-				<section class="mainContent">
-					<div>
-						<div>
-							<div>
-								<div class="circle"></div>
-								<div class="circle cr2"></div>
-							</div>
-							<div>
-								<h2>SCIENCE UNIVERSE</h2>
-							</div>
-						</div>
-						<div>
-							<div>
-								<img src="IMG/arrow.svg" alt="Arrow">
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<nav class="mainContent">
-					<div>
-						<div>
-							<div class="cajaNum1">
-								<div class="textArea">
-									<div>
-										<h2><span>Explain</span> natural phenomena and make predictions.</h2>
-									</div>
-								</div>
-								<div class="contentLine">
-									<div>
-										<p><span>Scientific knowledge</span> is constantly evolving as new 
-											discoveries and technologies emerge, contributing to our understanding
-											of the natural world.</p>
-									</div>
-									<div class="line">
-									</div>
-								</div>
-								<div class="textArea2">
-									<div>
-										<span>OBSERVATION SYSTEM</span>
-									</div>
-									<div class="findArrowUnderline">
-										<div>
-											<img src="IMG/arrowW.svg" alt="Arrow">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div>
-							<div>
-								<div class="cajaNum2">
-									<div>
-										<h2>21.8M+</h2>
-									</div>
-									<div>
-										<h3>Analysis</h3>
-										<p><span>Based on observation</span> and existing
-											knowledge scientists propose a testable
-											explanation or hypothesis to answer.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div>
-								<div class="cajaNum3">
-
-									<div>
-										<div>
-											<div>
-												<div class="cicle"></div>
-											</div>
-											<div>
-												<div>
-													<img src="IMG/icon.png" alt="Icon">
-												</div>
-											</div>
-										</div>
-										<div>
-											<span>Research</span>
-										</div>
-									</div>
-
-									<div>
-										<h3>Communty</h3>
-										<p>New evidence and <span>discoveries</span> can lead to
-											the modification or rejection of existing
-											theories and the development</p>
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</nav>
-
-				<div class="carousel mainContent">
-					<div class="carousel-inner">
-						<p>SCIENTIST  MAKE OBSERVATIONS OF THE NATURAL WORLD AND IDENTIFY A SPECIFIC PHENOMENON OR QUESTION OF
-							INTEREST • SCIENTIS ANALYSE THE COLLECTED DATA USING STATISTICAL AND ANALYTICAL METHODS •
-						</p>
-					</div>
-				</div>
-
-				<footer class="footerContent">
-					<p>
-						SCIENCE IS A SYSTEMATIC AND <span>ORGANIZED APPROACH</span> TO UNDERSTANDING THE NATURAL WORLD THROUGH 
-						OBSERVATION EXPERIMENTATION AND THE FORMULATIONS OF THEORIES OR LAWS <span>BASED ON EVIDENCE</span>
-					</p>
-				</footer>
-
-			</main>
-		</div>
+  <div class="menu" id="menu" aria-label="Site menu" inert>
+    <div class="menu__media" aria-hidden="true">
+      <video class="menu__video" muted loop playsinline preload="none"
+             poster="assets/video/science-universe-loop-poster.jpg" width="720" height="720">
+        <source src="assets/video/science-universe-loop.mp4" type="video/mp4">
+      </video>
     </div>
-
-	<div class="overlayMenu">
-		<div>
-			<video autoplay muted loop>
-				<source src="IMG/vid1.mp4" type="video/mp4">
-			</video>
-		</div>
-		<div>
-			<div class="menuClose">
-				<div class="Menu">
-					<img src="IMG/close.svg" alt="Burger">
-				</div>
-			</div>
-			<div>
-				<div>
-					<a href="">· Our services</a>
-				</div>
-				<div>
-					<a href="">· Possibilities</a>
-				</div>
-				<div>
-					<a href="https://twitter.com">· Twitter</a>
-				</div>
-				<div>
-					<a href="https://instagram.com">· Instagram</a>
-				</div>
-				<div>
-					<a href="">· Dashboard panel</a>
-				</div>
-				<div>
-					<a href="">· Formulario</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="JS/script.js">
-	</script>
+    <div class="menu__panel">
+      <button class="menu__close" type="button" id="menu-close" aria-label="Close menu">
+        <svg viewBox="0 0 30 30" width="22" height="22" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
+        </svg>
+      </button>
+      <nav class="menu__nav" aria-label="Menu">
+        <ul class="menu__list">
+          <li><a href="#hero">· Overview</a></li>
+          <li><a href="#analysis">· Analysis</a></li>
+          <li><a href="#community">· Community</a></li>
+          <li><a href="https://wib.digital" rel="noopener">· wib.digital</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </body>
 </html>

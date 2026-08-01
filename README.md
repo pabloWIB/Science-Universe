@@ -1,200 +1,119 @@
-![image](https://github.com/pabloDYEL/ESTATICA-50/assets/116923433/1f754694-5676-4147-99fc-c30de5117a98)
-# Science Universe
+# Science-Universe
 
-A modern, interactive static website dedicated to exploring and explaining natural phenomena through scientific observation and analysis. This platform showcases scientific knowledge with an elegant, contemporary design featuring dynamic visualizations and comprehensive research capabilities.
+[![Hire me on Fiverr](https://img.shields.io/badge/Hire%20me%20on-Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/pablonietop)
 
-## Tech Stack
+Landing page for a science publication, built around explaining natural phenomena and making predictions.
 
-- **HTML5** - Semantic structure and accessibility
-- **CSS3** - Advanced styling with modern effects and animations
-- **Vanilla JavaScript** - Interactive features and dynamic content
-- **No dependencies** - Pure static implementation
+[![Live demo](https://img.shields.io/badge/demo-scienceuniverse.wib.digital-2ea44f)](https://scienceuniverse.wib.digital)
+![Dependencies](https://img.shields.io/badge/npm%20dependencies-0-brightgreen)
+![Build step](https://img.shields.io/badge/build%20step-none-lightgrey)
+![First load](https://img.shields.io/badge/first%20load-277%20KB-brightgreen)
+
+## Description
+
+Science outreach pages usually open with a picture of a galaxy and a slogan. This one opens with a definition of what science does — explain natural phenomena and make predictions — and treats that sentence as the hero rather than decoration around it.
+
+Below the statement, the page names two sections: Analysis and Community. The claim being made is that the publication is a place where findings are examined and discussed, not a feed of images.
+
+Motion is carried by an embedded video rather than a 3D library, which keeps the page light while giving the hero movement. The whole composition is designed to sit inside one screen on desktop and to stack into a scrollable column on phones.
 
 ## Features
 
-- Interactive scientific observation system
-- Dynamic data visualization with 21.8M+ analysis points
-- Responsive design optimized for research and discovery
-- Modern glassmorphism UI with bubble effects
-- Scientific methodology framework
-- Community research integration
-- Cross-platform compatibility
-- Professional scientific presentation
+- Definition-led hero, with the statement as the primary content.
+- Analysis and community sections naming what the publication does.
+- Video in the hero rather than a 3D runtime.
+- Full-screen overlay menu: opens from the header, closes on `Escape`, on the close button, and on any link inside it.
+- Entrance choreography built from CSS animations, so the page renders its final state even if JavaScript never runs.
+- Honours `prefers-reduced-motion`: the marquee stops and the background video pauses.
+- No build step, no package manager, no runtime dependencies.
 
-## Project Structure
+## Tech stack
+
+| Layer | Technology | Role in project |
+|---|---|---|
+| Markup | HTML5 | `index.html` and `404.html` |
+| Styling | CSS3 custom properties | `base.css` (tokens/reset), `layout.css` (structure), `components.css` (UI) |
+| Scripting | Vanilla JavaScript | Single IIFE in `assets/js/main.js`, no globals |
+| Type | Plus Jakarta Sans | Google Fonts, `preconnect` + `display=swap` |
+| Media | MP4 + JPEG poster | Hero video served from the repository |
+
+## Prerequisites
+
+None. There is nothing to install and nothing to compile. Opening `index.html` directly works; serving over HTTP is preferable so the hero video can be range-requested rather than downloaded whole.
+
+## Installation
+
+```bash
+git clone https://github.com/pabloWIB/Science-Universe.git
+cd Science-Universe
+```
+
+## Usage
+
+Serve the folder with any static server:
+
+```bash
+python -m http.server 5177
+```
+
+Then open <http://127.0.0.1:5177>.
+
+Editing is direct: change the CSS files under `assets/css/`, there is no preprocessor in between. Design values live as custom properties in the `:root` block of `assets/css/base.css` — colours, the 4/8/16/24/32/48/64/96 spacing scale, radii, the type scale and motion durations. Change a token there and it propagates.
+
+The hero video is a static asset. Replacing it means swapping `assets/video/science-universe-loop.mp4` and regenerating the poster frame:
+
+```bash
+ffmpeg -i assets/video/science-universe-loop.mp4 -vframes 1 -q:v 4 assets/video/science-universe-loop-poster.jpg
+```
+
+## Project structure
 
 ```
-science-universe/
-├── index.html              # Main landing page
-├── css/
-│   ├── style.css          # Core styling
-│   ├── animations.css     # Scientific visualizations
-│   ├── glassmorphism.css  # Modern UI effects
-│   └── responsive.css     # Multi-device support
-├── js/
-│   ├── main.js           # Core functionality
-│   ├── observations.js   # Scientific data handling
-│   ├── analysis.js       # Data processing
-│   └── visualizations.js # Interactive graphics
-├── data/
-│   ├── phenomena.json    # Scientific phenomena database
-│   ├── research.json     # Research methodologies
-│   └── discoveries.json  # Historical discoveries
+.
+├── index.html                  # The whole site: hero, three cards, marquee, overlay menu
+├── 404.html                    # Error page; uses root-absolute paths so it works at any URL
+├── robots.txt
+├── sitemap.xml
 ├── assets/
-│   ├── images/           # Scientific illustrations
-│   ├── icons/            # UI elements
-│   └── animations/       # Visual effects
-└── README.md            # This file
+│   ├── css/
+│   │   ├── base.css            # Design tokens, reset, typography, utilities
+│   │   ├── layout.css          # Backdrop, page shell, header, grid, footer, choreography
+│   │   └── components.css      # Chips, hero, cards, marquee, overlay menu, error page
+│   ├── js/
+│   │   └── main.js             # Overlay menu and reduced-motion handling
+│   ├── img/
+│   │   ├── logo/               # favicon, apple-touch-icon, Open Graph card
+│   │   └── content/            # wib.digital mark used in the Community card
+│   └── video/                  # Hero loop and its poster frame
+└── docs/
+    ├── auditoria.md            # State of the project before the reorganisation
+    └── cambios.md              # What changed, grouped by phase
 ```
-
-## Quick Start
-
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/pabloWIB/Science-Universe.git
-   cd Science-Universe
-   ```
-
-2. **Open in browser**
-   ```bash
-   # Direct browser access
-   open index.html
-   # or double-click index.html
-   ```
-
-3. **Development Server (Recommended)**
-   ```bash
-   # Using Node.js live-server
-   npx live-server
-   
-   # Using Python (if available)
-   python -m http.server 8000
-   
-   # Using PHP built-in server
-   php -S localhost:8000
-   ```
-
-### Content Management
-
-- **Scientific Data**: Update JSON files in `data/` directory
-- **Phenomena**: Add new discoveries to `data/phenomena.json`
-- **Research Methods**: Modify `data/research.json`
-- **Visual Assets**: Replace images in `assets/images/`
 
 ## Deployment
 
-### GitHub Pages
-1. Push code to GitHub repository
-2. Navigate to Settings > Pages
-3. Select deployment branch (main/master)
-4. Access at `https://username.github.io/Science-Universe`
+Deployed on Vercel at [scienceuniverse.wib.digital](https://scienceuniverse.wib.digital). Static: upload the repository root as-is, no build command and no output directory. Vercel serves `404.html` automatically for unknown paths, so no rewrite configuration is needed.
 
-### Netlify
-1. Connect GitHub repository to Netlify
-2. Set build command: `# No build required`
-3. Set publish directory: `./`
-4. Deploy automatically on commits
+If the site is ever served from a different domain, four values need updating: `canonical`, `og:url` and `og:image` in `index.html`, and the `Sitemap:` line in `robots.txt` plus the `<loc>` in `sitemap.xml`.
 
-### Vercel
-1. Import GitHub repository
-2. Configure as static site
-3. Deploy with zero configuration
+## Known limitations
 
-### Alternative Hosting
-- **Firebase Hosting**: Deploy with `firebase deploy`
-- **Surge.sh**: Use `surge` command after installation
-- **AWS S3**: Upload to S3 bucket with static hosting
+- The header links are in-page anchors. On desktop the whole composition already fits in one screen, so they move focus without moving the viewport; on phones they scroll as expected.
+- The overlay menu requires JavaScript. Without it the trigger and the panel are hidden, and the header links still work.
 
-## Customization
+## Author
 
-### Scientific Content
-- **Phenomena Database**: Update `data/phenomena.json` with new discoveries
-- **Analysis Methods**: Customize statistical approaches in `js/analysis.js`
-- **Research Community**: Modify community features in relevant sections
-- **Observation System**: Enhance data collection in `js/observations.js`
-
-### Visual Design
-- **Color Scheme**: Adjust CSS custom properties for scientific themes
-- **Animations**: Modify bubble effects and scientific visualizations
-- **Typography**: Update font selections for readability
-- **Layout**: Customize grid systems for data presentation
-
-### Interactive Features
-- **Data Visualization**: Enhance charts and graphs in `js/visualizations.js`
-- **User Interface**: Improve navigation and accessibility
-- **Mobile Experience**: Optimize touch interactions
-- **Performance**: Implement lazy loading for large datasets
-
-## Browser Support
-
-- Chrome (latest) - Full feature support
-- Firefox (latest) - Complete compatibility
-- Safari (latest) - Optimized for Apple devices
-- Edge (latest) - Modern web standards
-- Mobile browsers - Responsive design
-
-## Performance Optimization
-
-### Image Optimization
-- Compress scientific illustrations and diagrams
-- Use WebP format for better loading speeds
-- Implement lazy loading for image galleries
-
-### Code Optimization
-- Minify CSS and JavaScript for production
-- Bundle and compress assets
-- Optimize JSON data structures
-
-### Hosting Optimization
-- Enable gzip compression
-- Configure browser caching
-- Use CDN for global accessibility
-
-## Scientific Methodology
-
-This platform follows established scientific principles:
-
-1. **Observation** - Systematic data collection
-2. **Hypothesis Formation** - Testable explanations
-3. **Experimentation** - Controlled testing
-4. **Analysis** - Statistical evaluation
-5. **Peer Review** - Community validation
-
-## Contributing
-
-### Development Workflow
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/scientific-enhancement`)
-3. Implement changes with proper documentation
-4. Add tests for new scientific calculations
-5. Submit pull request with detailed description
-
-### Content Contributions
-- Scientific accuracy is paramount
-- Cite sources for all claims and data
-- Follow established scientific notation
-- Maintain consistent formatting
-
-### Code Standards
-- Use semantic HTML for accessibility
-- Follow modern JavaScript best practices
-- Maintain clean, documented code
-- Test across multiple browsers
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Scientific community for methodological foundations
-- Open source contributors to web technologies
-- Research institutions providing data and insights
+**Pablo Nieto Pérez** — [wib.digital](https://wib.digital)
+GitHub: [@pabloWIB](https://github.com/pabloWIB)
 
 ---
 
-**Live Demo**: [Insert deployed URL here]  
-**Repository**: https://github.com/pabloWIB/Science-Universe.git  
-**Scientific Methodology**: Based on evidence-driven research and peer review
+## Hire me
+
+I build **custom internal tools, CRMs and dashboards** for small teams, and
+**conversion-focused websites** for businesses.
+
+- [Custom internal tool, CRM or dashboard](https://www.fiverr.com/pablonietop/build-a-custom-internal-app-for-your-business) — from $45
+- [Conversion-focused website](https://www.fiverr.com/pablonietop/convert-your-landing-page-design-to-code) — from $80
+- [All my services on Fiverr](https://www.fiverr.com/pablonietop)
+- [wib.digital](https://wib.digital)

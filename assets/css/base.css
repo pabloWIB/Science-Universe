@@ -1,0 +1,225 @@
+/* ==========================================================================
+   base.css — design tokens, reset and typography
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Colour — derived from the palette the site already used */
+  --c-ink: #000000;
+  --c-navy: #072350;
+  --c-blue: #12578c;
+  --c-graphite: #2c2c2c;
+  --c-line: #e1e1e1;
+  --c-paper: #f3f3f3;
+  --c-canvas: #cccccc;
+  --c-white: #ffffff;
+
+  --c-surface-light: rgba(243, 243, 243, 0.85);
+  --c-surface-blue: rgba(18, 87, 140, 0.9);
+
+  /* Spacing scale — 4 / 8 / 16 / 24 / 32 / 40 / 48 / 64 / 96 */
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-40: 2.5rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+  --space-96: 6rem;
+
+  /* Radii */
+  --r-sm: 20px;
+  --r-md: 25px;
+  --r-lg: 30px;
+  --r-pill: 999px;
+  --r-round: 50%;
+
+  /* Type scale */
+  --fs-3xs: 0.6875rem;
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2rem;
+
+  --lh-tight: 1.2;
+  --lh-body: 1.5;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 800;
+
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Motion */
+  --t-fast: 150ms;
+  --t-base: 200ms;
+  --t-slow: 250ms;
+  --t-scene: 900ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Effects */
+  --blur-glass: blur(7px);
+  --shadow-focus: 0 0 0 2px rgba(7, 35, 80, 0.25);
+
+  /* Layout */
+  --shell-width: 98.5%;
+  --shell-max: 3000px;
+  --touch-min: 44px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: var(--r-4, 4px);
+}
+
+/* --------------------------------------------------------------------------
+   3. Base typography
+   -------------------------------------------------------------------------- */
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  background: var(--c-canvas);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-semibold);
+  text-wrap: balance;
+}
+
+p {
+  max-width: 68ch;
+}
+
+::selection {
+  background: rgba(7, 35, 80, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   4. Utilities
+   -------------------------------------------------------------------------- */
+
+.u-underline {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.u-strong {
+  font-weight: var(--fw-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding: var(--space-8) var(--space-24);
+  background: var(--c-navy);
+  color: var(--c-white);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--t-base) var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-color: var(--c-white);
+}
+
+/* --------------------------------------------------------------------------
+   5. Reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

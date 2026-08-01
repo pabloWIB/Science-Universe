@@ -1,0 +1,619 @@
+/* ==========================================================================
+   components.css — chips, hero, pillars, marquee, overlay menu
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Chip (header navigation links and the menu trigger)
+   -------------------------------------------------------------------------- */
+
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: var(--space-8) var(--space-24);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  color: var(--c-line);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--t-base) var(--ease),
+    color var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+
+.chip:hover {
+  background-color: var(--c-graphite);
+  color: var(--c-white);
+}
+
+.chip:focus-visible {
+  outline-color: var(--c-white);
+  outline-offset: 2px;
+}
+
+.chip:active {
+  background-color: var(--c-ink);
+}
+
+.chip--active {
+  background-color: var(--c-white);
+  border-color: var(--c-white);
+  color: var(--c-ink);
+}
+
+.chip--active:hover {
+  background-color: var(--c-line);
+  color: var(--c-ink);
+}
+
+.chip--solid {
+  width: auto;
+  background-color: var(--c-graphite);
+  border-color: var(--c-graphite);
+  color: var(--c-white);
+}
+
+.chip--solid:hover {
+  background-color: var(--c-white);
+  border-color: var(--c-white);
+  color: var(--c-ink);
+}
+
+/* --------------------------------------------------------------------------
+   2. Hero banner
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--r-md);
+  background-image: linear-gradient(
+    to right,
+    rgba(7, 35, 80, 0.92),
+    rgba(7, 35, 80, 0.6)
+  );
+  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: var(--blur-glass);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--r-sm);
+  background-image: linear-gradient(
+    to right,
+    rgba(7, 35, 80, 0.95),
+    rgba(7, 35, 80, 0.75)
+  );
+  opacity: 0;
+  transition: opacity var(--t-slow) linear;
+}
+
+.hero:hover::before {
+  opacity: 0.8;
+}
+
+.hero__row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  width: 95%;
+  margin: 0 auto;
+  padding-block: var(--space-8);
+}
+
+.hero__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  min-width: 0;
+}
+
+.hero__orbs {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.orb {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  overflow: hidden;
+  border-radius: var(--r-round);
+}
+
+.orb::before {
+  content: "";
+  position: absolute;
+  inset: -1px auto -1px -1px;
+  z-index: -1;
+  width: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(7px);
+}
+
+.orb--offset {
+  margin-left: -14px;
+}
+
+.hero__title {
+  color: var(--c-white);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+}
+
+.hero__jump {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: var(--r-round);
+  color: var(--c-ink);
+}
+
+.hero__jump svg {
+  box-sizing: content-box;
+  padding: 4px;
+  border-radius: var(--r-round);
+  background: var(--c-white);
+  transition: background-color var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease);
+}
+
+.hero__jump:hover svg {
+  background: var(--c-line);
+  transform: translateX(2px);
+}
+
+.hero__jump:focus-visible {
+  outline-color: var(--c-white);
+  outline-offset: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Pillar cards
+   -------------------------------------------------------------------------- */
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: var(--space-24) 6%;
+  border-radius: var(--r-lg);
+}
+
+.pillar__text,
+.pillar__note p {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+}
+
+.pillar__heading {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+}
+
+/* 3.1 Statement card */
+
+.pillar--statement {
+  justify-content: space-between;
+  background: var(--c-surface-light);
+  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: var(--blur-glass);
+  color: var(--c-navy);
+}
+
+.pillar__title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.pillar__note {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.rule {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(
+    to right,
+    rgb(7, 35, 80),
+    rgba(203, 203, 203, 0.2)
+  );
+}
+
+.pillar__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  margin: 0;
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pillar__badge {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: var(--space-4);
+  border-radius: var(--r-round);
+  background: var(--c-navy);
+  color: var(--c-white);
+}
+
+/* 3.2 Analysis card */
+
+.pillar--analysis {
+  justify-content: center;
+  background: var(--c-surface-blue);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  color: var(--c-white);
+}
+
+/* 3.3 Community card */
+
+.pillar--community {
+  justify-content: space-between;
+  background: var(--c-navy);
+  color: var(--c-white);
+}
+
+.pillar__eyebrow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.pillar__eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--c-white);
+  border-radius: var(--r-round);
+}
+
+.pillar__mark {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-round);
+}
+
+.pillar__eyebrow-text {
+  font-size: var(--fs-2xs);
+}
+
+/* --------------------------------------------------------------------------
+   4. Marquee
+   -------------------------------------------------------------------------- */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  padding-block: var(--space-4);
+  border-radius: var(--r-md);
+  background: var(--c-ink);
+  color: var(--c-white);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  max-width: none;
+  font-size: var(--fs-2xs);
+  white-space: nowrap;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.marquee__copy {
+  padding-right: var(--space-16);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Overlay menu
+   -------------------------------------------------------------------------- */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  overflow: hidden;
+  background: var(--c-canvas);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-slow) var(--ease),
+    visibility 0s linear var(--t-slow);
+}
+
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--t-slow) var(--ease), visibility 0s;
+}
+
+.menu__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.menu__video {
+  width: 90%;
+  max-width: 720px;
+  opacity: 0;
+  transform: scale(0.25);
+  transition: transform 1s var(--ease), opacity 1s var(--ease);
+}
+
+.menu.is-open .menu__video {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 200ms;
+}
+
+/* Scrim: keeps the menu labels legible over the moving footage. */
+.menu__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(204, 204, 204, 0.6);
+}
+
+.menu__panel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+
+.menu__close {
+  position: absolute;
+  top: var(--space-16);
+  right: var(--space-16);
+  display: grid;
+  place-items: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: var(--r-round);
+  color: var(--c-navy);
+  transition: background-color var(--t-base) var(--ease);
+}
+
+.menu__close:hover {
+  background-color: rgba(7, 35, 80, 0.1);
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.menu__list a {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding-inline: var(--space-16);
+  color: var(--c-navy);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  opacity: 0;
+  transform: scale(0.5) translateY(-45px);
+  transition: transform var(--t-slow) var(--ease),
+    opacity var(--t-slow) var(--ease), color var(--t-base) var(--ease);
+}
+
+.menu.is-open .menu__list a {
+  opacity: 1;
+  transform: none;
+}
+
+.menu.is-open .menu__list li:nth-child(1) a {
+  transition-delay: 300ms;
+}
+
+.menu.is-open .menu__list li:nth-child(2) a {
+  transition-delay: 380ms;
+}
+
+.menu.is-open .menu__list li:nth-child(3) a {
+  transition-delay: 460ms;
+}
+
+.menu.is-open .menu__list li:nth-child(4) a {
+  transition-delay: 540ms;
+}
+
+.menu__list a:hover {
+  color: var(--c-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 480px) {
+  .hero__title {
+    font-size: var(--fs-md);
+    letter-spacing: 0.45rem;
+  }
+
+  .pillar__title {
+    font-size: var(--fs-lg);
+  }
+
+  .menu__list {
+    gap: var(--space-24);
+  }
+
+  .menu__list a {
+    font-size: var(--fs-md);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__row {
+    padding-block: var(--space-16);
+  }
+
+  .hero__title {
+    font-size: var(--fs-lg);
+    letter-spacing: 0.55rem;
+  }
+
+  .orb {
+    width: 32px;
+    height: 32px;
+  }
+
+  .orb--offset {
+    margin-left: -18px;
+  }
+
+  .pillar__heading {
+    font-size: var(--fs-md);
+  }
+
+  .pillar__mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu__close {
+    top: var(--space-32);
+    right: var(--space-32);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__title {
+    font-size: var(--fs-xl);
+    letter-spacing: 0.7rem;
+  }
+
+  .orb {
+    width: 35px;
+    height: 35px;
+  }
+
+  .orb--offset {
+    margin-left: -20px;
+  }
+
+  .pillar__title {
+    font-size: var(--fs-xl);
+  }
+
+  .pillar__text,
+  .pillar__note p {
+    font-size: var(--fs-sm);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Error page
+   -------------------------------------------------------------------------- */
+
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  align-items: flex-start;
+  padding: var(--space-32) 8%;
+  border-radius: var(--r-lg);
+  background: var(--c-navy);
+  color: var(--c-white);
+}
+
+.error__code {
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+}
+
+.error__title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.error__text {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+}
+
+.error__home {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: var(--touch-min);
+  padding: var(--space-8) var(--space-24);
+  border: 1px solid var(--c-white);
+  border-radius: var(--r-lg);
+  color: var(--c-white);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  transition: background-color var(--t-base) var(--ease),
+    color var(--t-base) var(--ease);
+}
+
+.error__home:hover {
+  background-color: var(--c-white);
+  color: var(--c-navy);
+}
+
+@media (min-width: 768px) {
+  .error__title {
+    font-size: var(--fs-xl);
+  }
+}

@@ -1,0 +1,269 @@
+/* ==========================================================================
+   layout.css — backdrop, page shell, header, main grid, footer
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Backdrop video layer
+   -------------------------------------------------------------------------- */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--c-canvas);
+  transition: transform var(--t-scene) var(--ease), opacity var(--t-scene) var(--ease);
+}
+
+.backdrop__video {
+  width: 90%;
+  max-width: 720px;
+  animation: video-in 1s var(--ease) 200ms both;
+}
+
+@keyframes video-in {
+  from {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Menu open: the backdrop collapses away behind the overlay. */
+body.is-menu-open .backdrop {
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+/* --------------------------------------------------------------------------
+   2. Page shell
+   -------------------------------------------------------------------------- */
+
+.shell {
+  position: relative;
+  z-index: 10;
+}
+
+.shell__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  width: var(--shell-width);
+  max-width: var(--shell-max);
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding-block: var(--space-16);
+}
+
+/* --------------------------------------------------------------------------
+   3. Header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  background: var(--c-ink);
+  border-radius: var(--r-lg);
+  padding: var(--space-4);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.site-nav__list {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.site-nav__list li {
+  flex: 1 1 auto;
+}
+
+/* Secondary links collapse on the narrowest screens; the overlay menu keeps
+   them reachable. */
+.site-nav__list li:nth-child(2),
+.site-nav__list li:nth-child(3) {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. Main stack
+   -------------------------------------------------------------------------- */
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Pages without a hero stack sit centred instead of anchored to the bottom. */
+.main--center {
+  margin-block: auto;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   5. Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer__statement {
+  max-width: 100ch;
+  font-size: var(--fs-3xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.01em;
+}
+
+.site-footer__credit {
+  font-size: var(--fs-3xs);
+  color: var(--c-graphite);
+}
+
+.site-footer__credit a {
+  color: var(--c-navy);
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: color var(--t-base) var(--ease);
+}
+
+.site-footer__credit a:hover,
+.site-footer__credit a:focus-visible {
+  color: var(--c-blue);
+}
+
+/* --------------------------------------------------------------------------
+   6. Entrance choreography
+   -------------------------------------------------------------------------- */
+
+.reveal {
+  animation: rise var(--t-scene) var(--ease) both;
+}
+
+.reveal--header {
+  animation-name: drop;
+}
+
+.site-header {
+  animation-delay: 500ms;
+}
+
+.hero {
+  animation-delay: 600ms;
+}
+
+.pillars {
+  animation-delay: 700ms;
+}
+
+.marquee {
+  animation-delay: 800ms;
+}
+
+.site-footer {
+  animation-delay: 900ms;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Breakpoints
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 480px) {
+  .site-nav__list {
+    flex: 0 0 auto;
+  }
+
+  .site-nav__list li {
+    flex: 0 0 auto;
+  }
+
+  .site-nav__list li:nth-child(2) {
+    display: block;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pillar--statement {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer {
+    width: 85%;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-nav__list li:nth-child(3) {
+    display: block;
+  }
+
+  .pillars {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .pillar--statement {
+    grid-column: auto;
+  }
+
+  .site-footer {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shell__inner {
+    padding-block: var(--space-24);
+  }
+}
